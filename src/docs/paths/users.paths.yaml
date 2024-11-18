@@ -1,0 +1,48 @@
+paths:
+  /register:
+    post:
+      tags:
+        - User Controller
+      summary: Create a user
+      parameters:
+        - $ref: "#/components/parameters/X-Request-Source"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRegistration"
+      responses:
+        200:
+          # description: Successful response
+          # content:
+          #   text/plain:
+          #      schema:
+          #     oneOf:
+                # - $ref: "#/components/responses/UserAlreadyExist"
+          $ref: "#/components/responses/UserRegistrationSuccess"     
+          # description: The response can be either user already exist or user registration success.  
+        500:
+          $ref: "#/components/responses/InternalError"
+  /login:
+    post:
+      tags:
+        - User Controller
+      summary: User login
+      parameters:
+        - $ref: "#/components/parameters/X-Request-Source"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginPayload"
+      responses:
+        200:
+          description: If provided credentials are valid then receive a token else receive invalid credentials message
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/responses/LoginSuccess"
+        500:
+          $ref: "#/components/responses/InternalError"

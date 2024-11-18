@@ -1,0 +1,126 @@
+paths:
+  /task:
+    post:
+      tags:
+        - Task Controller
+      summary: Create a task
+      parameters:
+        - $ref: "#/components/parameters/X-Request-Source"
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: The request payload to create new task
+        required: 
+          - title
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskPayload"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/UnauthorizedUser"
+        500:
+          $ref: "#/components/responses/InternalError"
+    get:
+      tags:
+        - Task Controller
+      summary: Get all task
+      parameters:
+        - $ref: "#/components/parameters/X-Request-Source"
+      security:
+        - BearerAuth: []
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TaskResponse"
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/UnauthorizedUser"
+        500:
+          $ref: "#/components/responses/InternalError"
+  /task/{id}:
+    get:
+      tags:
+        - Task Controller
+      summary: Get task by task id
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/TaskIdParams"
+        - $ref: "#/components/parameters/X-Request-Source"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/UnauthorizedUser"
+        500:
+          $ref: "#/components/responses/InternalError"
+    put:
+      tags:
+        - Task Controller
+      summary: Update task details by task id
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/TaskIdParams"
+        - $ref: "#/components/parameters/X-Request-Source"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTask"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/UnauthorizedUser"
+        500:
+          $ref: "#/components/responses/InternalError"
+    delete:
+      tags:
+        - Task Controller
+      summary: Delete task by task id
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/TaskIdParams"
+        - $ref: "#/components/parameters/X-Request-Source"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/UnauthorizedUser"
+        500:
+          $ref: "#/components/responses/InternalError"

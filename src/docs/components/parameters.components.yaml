@@ -1,0 +1,16 @@
+parameters:
+  X-Request-Source:
+    name: X-Request-Source
+    in: header
+    description: Custom header to specify the source of the request (e.g., mobile-app, web-app)
+    schema:
+      type: string
+      example: mobile-ap
+  TaskIdParams:
+    in: path
+    name: id
+    required: true
+    description: It is task id and it required to get task object
+    schema:
+      type: integer
+      example: 3

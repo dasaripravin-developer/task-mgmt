@@ -1,0 +1,117 @@
+schemas:
+    UserRegistration:
+        type: object
+        required:
+            - firstName
+            - lastName
+            - username
+            - password
+        properties:
+            firstName:
+                type: string
+                minLength: 1
+                maxLength: 10
+                example: pravin
+            lastName:
+                type: string
+                minLength: 1
+                maxLength: 10
+                example: dasari
+            username:
+                type: string
+                minLength: 2
+                maxLength: 15
+                example: dasaripravin
+            password:
+                type: string
+                minLength: 8
+                maxLength: 16
+                example: 12345678
+    LoginPayload:
+        type: object
+        required:
+            - username
+            - password
+        properties:
+            username:
+                type: string
+                minLength: 2
+                maxLength: 15
+                example: dasaripravin
+            password:
+                type: string
+                minLength: 8
+                maxLength: 16
+                example: 12345678
+    TaskResponse:
+        type: object
+        properties:
+            title:
+                type: string
+                example: Swagger
+            description:
+                type: string
+                example: RnD on swagger and implementation of it
+            dueDate:
+                type: string
+                example: 11-20-2025
+            status:
+                type: string
+                example: Completed
+            userId:
+                type: number
+                example: 1
+            createdAt:
+                type: number
+                example: 1731910336794
+            updatedAt:
+                type: number
+                example: 1731910336794
+            taskId:
+                type: number
+                example: 3
+    TaskPayload:
+        type: object
+        required:
+            - title
+            - description
+            - dueDate
+        properties:
+            title:
+                type: string
+                minLength: 5
+                maxLength: 100
+                example: Swagger
+            description:
+                type: string
+                minLength: 10
+                maxLength: 250
+                example: RnD on swagger and implementation of it
+            dueDate:
+                type: string
+                example: 11-20-2024
+            status:
+                type: string
+                enum: ["Pending", "Completed", "In Progress"]
+                default: Pending
+                example: Pending
+    UpdateTask:
+        type: object
+        properties:
+            title:
+                type: string
+                example: swagger basic
+                minLength: 5
+                maxLength: 100
+            status:
+                type: string
+                enum: ["Pending", "Completed", "In Progress"]
+                example: Completed
+            dueDate:
+                type: string
+                example: 11-22-2025
+            description:
+                type: string
+                minLength: 10
+                maxLength: 250
+                example: Implementation of swagger doc

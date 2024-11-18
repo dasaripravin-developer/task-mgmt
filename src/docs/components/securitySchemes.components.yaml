@@ -1,0 +1,10 @@
+securitySchemes:
+  BearerAuth:
+    type: http
+    description: The authentication token needed to for authorized request
+    in: header
+    name: authorization
+    scheme: bearer
+    bearerFormat: JWT
+security:
+  - BearerAuth: []

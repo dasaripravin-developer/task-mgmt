@@ -1,0 +1,43 @@
+responses:
+  InternalError:
+    description: Internal server error
+    content:
+      'text/plain':
+        schema:
+          type: string
+          example: something went wrong, please try again later
+  UserAlreadyExist:
+    description: If user already exit into system then you will get this message
+    content:
+      'text/plain':
+        schema:
+          type: string
+          example: dasaripravin already exist
+  UserRegistrationSuccess:
+    description: If user already exist into system then you will get user already exist message else user register into system.
+    content:
+      'text/plain':
+        schema:
+          type: object
+          example: User registration success
+  UnauthorizedUser:
+    type: object
+    properties:
+      message:
+        type: string
+        example: jwt expire
+  TokenNotProvided:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Token not provided
+  TokenExpire:
+    type: object
+    properties:
+      message:
+        type: string
+        example: jwt expire
+  LoginSuccess:
+    type: string
+    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsiYWN0aXZlUGF0aHMiOnsicGF0aHMiOnsicGFzc3dvcmQiOiJpbml0IiwidXNlcm5hbWUiOiJpbml0IiwibGFzdE5hbWUiOiJpbml0IiwiZmlyc3ROYW1lIjoiaW5pdCIsIl9pZCI6ImluaXQiLCJ1c2VySWQiOiJpbml0IiwiX192IjoiaW5pdCJ9LCJzdGF0ZXMiOnsicmVxdWlyZSI6e30sImluaXQiOnsiX2lkIjp0cnVlLCJmaXJzdE5hbWUiOnRydWUsImxhc3ROYW1lIjp0cnVlLCJ1c2VybmFtZSI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsInVzZXJJZCI6dHJ1ZSwiX192Ijp0cnVlfX19LCJza2lwSWQiOnRydWV9LCIkaXNOZXciOmZhbHNlLCJfZG9jIjp7Il9pZCI6IjY3MzcyZWQ2ZDNjZWFlZmE5NzdlYjljZCIsImZpcnN0TmFtZSI6InByYXZpbiIsImxhc3ROYW1lIjoiZGFzYXJpIiwidXNlcm5hbWUiOiJkYXNhcmkxMjMiLCJwYXNzd29yZCI6IiQyYSQxMCRWM3JTT1pkSFJybXNRNG90c2EwSUEuUGRUT0p6LnZCVUNuRlVRTjZOR21aVlcwcG9PejhRNiIsInVzZXJJZCI6NiwiX192IjowfSwiaWF0IjoxNzMxNjcyNzg5LCJleHAiOjE3MzE2NzYzODl9.h6g5UqdtThj9hg76FiHHxLb32Adk8IJVLUk3bKfBtSI
